@@ -11,20 +11,18 @@ class CaptureRepository:
         title: str,
         priority: int,
         energy: str,
-        minutes: int
-    ):
+        minutes: int,
+    ) -> Task:
 
         task = Task(
             title=title,
             priority=priority,
+            estimated_minutes=minutes,
             energy_required=energy,
-            estimated_minutes=minutes
         )
 
         db.add(task)
-
         db.commit()
-
         db.refresh(task)
 
         return task
